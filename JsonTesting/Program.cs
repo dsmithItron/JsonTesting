@@ -3,31 +3,36 @@
     internal class Program
     {
         public static int selectHistCount = 0;
+        public static List<string> tableNames = new() {("table1"),("table2")};
+        public string currentProfile = "base";
         static void Main(string[] args)
         {
             int Count = 0;
-            Console.WriteLine("Start Testing \n");
-            
-            ApplicationHistory.LoadHistory();
-            ApplicationHistory.WriteHistory();
-            ApplicationHistory.LoadHistory();
-            //TestJsonSelectHist();
-            ApplicationHistory.WriteHistory();
-            ApplicationHistory.selectLeft = new();
-            ApplicationHistory.selectMiddle = new();
-            ApplicationHistory.selectRight = new();
-            //TestJsonSelectHist();
-            ApplicationHistory.LoadHistory();
-            //TestJsonSelectHist();
-
-
             ApplicationSettings.LoadSettings();
-            testJsonSettings();
-            ApplicationSettings.LoadSettings();
+            /*
+            ApplicationSettings.ProfileName = "Base";
+            ApplicationSettings.history.tableConditions["table1"]["Insert"].Add("table1Insert");
+            ApplicationSettings.history.tableConditions["table1"]["Insert"].Add("table1Insert1");
+            ApplicationSettings.history.tableConditions["table1"]["Insert"].Add("table1Insert2");
+            ApplicationSettings.history.tableConditions["table1"]["Update"].Add("table1Update");
+            ApplicationSettings.history.tableConditions["table1"]["Update"].Add("table1Update3");
+            ApplicationSettings.history.tableConditions["table1"]["Update"].Add("table1Update2");
+            ApplicationSettings.history.tableConditions["table1"]["Select"].Add("table1Select");
+            ApplicationSettings.history.tableConditions["table1"]["Select"].Add("table1Select2");
+            ApplicationSettings.history.tableConditions["table1"]["Select"].Add("table1Select3");
+            ApplicationSettings.history.tableConditions["table2"]["Insert"].Add("table1Insert");
+            ApplicationSettings.history.tableConditions["table2"]["Insert"].Add("table1Insert1");
+            ApplicationSettings.history.tableConditions["table2"]["Insert"].Add("table1Insert2");
+            ApplicationSettings.history.tableConditions["table2"]["Update"].Add("table1Update");
+            ApplicationSettings.history.tableConditions["table2"]["Update"].Add("table1Update3");
+            ApplicationSettings.history.tableConditions["table2"]["Update"].Add("table1Update2");
+            ApplicationSettings.history.tableConditions["table2"]["Select"].Add("table1Select");
+            ApplicationSettings.history.tableConditions["table1"]["Select"].Add("table1Select2");
+            ApplicationSettings.history.tableConditions["table2"]["Select"].Add("table1Select3");
+            */
+
             ApplicationSettings.WriteSettings();
-
-
-            testJsonSettings();
+            Console.WriteLine("Success");
         }
 
 
@@ -35,33 +40,6 @@
 
         public static void TestJsonSelectHist()
         {
-            selectHistCount++;
-            Console.WriteLine("\n----------------");
-            Console.WriteLine($"-----Test Select Hist {selectHistCount}-----");
-            Console.WriteLine("----------------\n");
-            Console.WriteLine("\n----ApplicationHistory Select Left Begin----");
-            foreach (string selectString in ApplicationHistory.selectLeft)
-            {
-                Console.WriteLine(selectString);
-            }
-            Console.WriteLine("----ApplicationHistory Select Left End----\n");
-
-            Console.WriteLine("\n----ApplicationHistory Select Middle Begin----");
-            foreach (string selectString in ApplicationHistory.selectMiddle)
-            {
-                Console.WriteLine(selectString);
-            }
-            Console.WriteLine("----ApplicationHistory Select Middle End----\n");
-
-            Console.WriteLine("\n----ApplicationHistory Select Right Begin----");
-            foreach (string selectString in ApplicationHistory.selectRight)
-            {
-                Console.WriteLine(selectString);
-            }
-            Console.WriteLine("----ApplicationHistory Select Right End----\n");
-            Console.WriteLine("\n----------------");
-            Console.WriteLine($"-----Test Select Hist {selectHistCount}-----");
-            Console.WriteLine("----------------\n");
         }
 
         public static void testJsonSettings()
